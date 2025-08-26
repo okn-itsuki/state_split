@@ -1,43 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   split_shell.c                                      :+:      :+:    :+:   */
+/*   balanced_quotes.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iokuno <iokuno@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/26 03:28:41 by iokuno            #+#    #+#             */
-/*   Updated: 2025/08/26 21:07:36 by iokuno           ###   ########.fr       */
+/*   Created: 2025/08/26 20:09:56 by iokuno            #+#    #+#             */
+/*   Updated: 2025/08/26 20:20:17 by iokuno           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// split_shell.c
 #include "split_shell.h"
 
-char	**split_shell(const char *s)
+int	balanced_quotes(const char *s)
 {
 	size_t	i;
-	t_vec	vec;
-	char	*tok;
+	int		st;
 
-	if (!s)
-		return (NULL);
-	if (!balanced_quotes(s))
-		return (errno = EINVAL, NULL);
 	i = 0;
-	vec.v = NULL;
-	vec.len = 0;
-	vec.cap = 0;
-	skip_set(s, &i);
+	st = STATE_DEFAULT;
 	while (s[i])
 	{
-		tok = read_token(s, &i);
-		if (!tok)
-			return (all_free(vec.v), NULL);
-		if (vec_push(&vec, tok) < 0)
-			return (free(tok), all_free(vec.v), NULL);
-		skip_set(s, &i);
+		st = update_state(st, s[i]);
+		i++;
 	}
-	if (!vec.v && vec_push(&vec, NULL) < 0)
-		return (NULL);
-	return (vec.v);
+	return ((st & (STATE_SQUOTE | STATE_DQUOTE | STATE_ESC)) == 0);
 }

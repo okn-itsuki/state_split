@@ -1,0 +1,6 @@
+{
+	"files.associations": {
+		"split_shell.h": "c",
+		"stdio.h": "c"
+	}
+}

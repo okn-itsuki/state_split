@@ -6,7 +6,7 @@
 #    By: iokuno <iokuno@student.42tokyo.jp>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/26 03:29:05 by iokuno            #+#    #+#              #
-#    Updated: 2025/08/26 06:12:24 by iokuno           ###   ########.fr        #
+#    Updated: 2025/08/26 21:12:39 by iokuno           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,15 @@ SRC_DIR  := src
 OBJ_DIR  := obj
 
 SRCS     := $(SRC_DIR)/split_shell.c \
-            $(SRC_DIR)/split_shell_utilty.c
+		$(SRC_DIR)/all_free.c \
+		$(SRC_DIR)/balanced_quotes.c \
+		$(SRC_DIR)/is_delim_top.c \
+		$(SRC_DIR)/is_visible.c \
+		$(SRC_DIR)/read_token.c \
+		$(SRC_DIR)/skip_set.c \
+		$(SRC_DIR)/t_buf.c \
+		$(SRC_DIR)/t_vec.c \
+		$(SRC_DIR)/update_state.c
 
 OBJS     := $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 DEPS     := $(OBJS:.o=.d)
