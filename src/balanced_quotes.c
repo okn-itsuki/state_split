@@ -6,7 +6,7 @@
 /*   By: iokuno <iokuno@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 20:09:56 by iokuno            #+#    #+#             */
-/*   Updated: 2025/08/26 20:20:17 by iokuno           ###   ########.fr       */
+/*   Updated: 2025/08/26 23:41:46 by iokuno           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 int	balanced_quotes(const char *s)
 {
 	size_t	i;
-	int		st;
+	int		state;
 
 	i = 0;
-	st = STATE_DEFAULT;
+	state = STATE_DEFAULT;
 	while (s[i])
 	{
-		st = update_state(st, s[i]);
+		state = update_state(state, s[i]);
 		i++;
 	}
-	return ((st & (STATE_SQUOTE | STATE_DQUOTE | STATE_ESC)) == 0);
+	return ((state & (STATE_SQUOTE | STATE_DQUOTE | STATE_ESC)) == 0);
 }

@@ -6,7 +6,7 @@
 /*   By: iokuno <iokuno@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 03:26:48 by iokuno            #+#    #+#             */
-/*   Updated: 2025/08/26 21:08:31 by iokuno           ###   ########.fr       */
+/*   Updated: 2025/08/26 23:41:38 by iokuno           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,18 @@
 # include <errno.h>
 # include <stdbool.h>
 # include <stdlib.h>
+# include <unistd.h>
+
+// error messege
+# define _EINVAL "Invalid argument"
+# define _ENOMEM "Memory allocation failed."
 
 enum		e_states
 {
-	STATE_DEFAULT = 0x00,
-	STATE_SQUOTE = 0x01,
-	STATE_DQUOTE = 0x02,
-	STATE_ESC = 0x04
+	STATE_DEFAULT = 0b0000,
+	STATE_SQUOTE = 0b0001,
+	STATE_DQUOTE = 0b0010,
+	STATE_ESC = 0b0100
 };
 
 typedef struct s_buf
@@ -71,5 +76,8 @@ int			vec_push(t_vec *v, char *s);
 
 // update_state.c
 int			update_state(int st, char c);
+
+// error_mes.c
+void		error_mes(char *mes);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: iokuno <iokuno@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 03:28:41 by iokuno            #+#    #+#             */
-/*   Updated: 2025/08/26 21:07:36 by iokuno           ###   ########.fr       */
+/*   Updated: 2025/08/27 00:56:53 by iokuno           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	**split_shell(const char *s)
 	if (!s)
 		return (NULL);
 	if (!balanced_quotes(s))
-		return (errno = EINVAL, NULL);
+		return (error_mes(_EINVAL), NULL);
 	i = 0;
 	vec.v = NULL;
 	vec.len = 0;
