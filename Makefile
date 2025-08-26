@@ -6,7 +6,7 @@
 #    By: iokuno <iokuno@student.42tokyo.jp>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/26 03:29:05 by iokuno            #+#    #+#              #
-#    Updated: 2025/08/26 23:40:44 by iokuno           ###   ########.fr        #
+#    Updated: 2025/08/27 06:20:19 by iokuno           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,9 @@ SRCS     := $(SRC_DIR)/split_shell.c \
 		$(SRC_DIR)/t_buf.c \
 		$(SRC_DIR)/t_vec.c \
 		$(SRC_DIR)/error_mes.c \
-		$(SRC_DIR)/update_state.c
+		$(SRC_DIR)/update_state.c \
+		$(SRC_DIR)/my_realloc.c \
+		$(SRC_DIR)/my_memcpy.c
 
 OBJS     := $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 DEPS     := $(OBJS:.o=.d)

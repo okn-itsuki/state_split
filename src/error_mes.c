@@ -6,7 +6,7 @@
 /*   By: iokuno <iokuno@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 22:30:31 by iokuno            #+#    #+#             */
-/*   Updated: 2025/08/26 23:42:38 by iokuno           ###   ########.fr       */
+/*   Updated: 2025/08/27 06:12:40 by iokuno           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,5 @@ static void	put_str_error(char *s)
 
 void	error_mes(char *mes)
 {
-	if (mes == _EINVAL)
-		put_str_error(_EINVAL);
-	if (mes == _ENOMEM)
-		put_str_error(_ENOMEM);
+	put_str_error(mes);
 }

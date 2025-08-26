@@ -6,13 +6,14 @@
 /*   By: iokuno <iokuno@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 03:26:48 by iokuno            #+#    #+#             */
-/*   Updated: 2025/08/26 23:41:38 by iokuno           ###   ########.fr       */
+/*   Updated: 2025/08/27 06:19:35 by iokuno           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SPLIT_SHELL_H
 # define SPLIT_SHELL_H
 
+// library
 # include <errno.h>
 # include <stdbool.h>
 # include <stdlib.h>
@@ -22,6 +23,7 @@
 # define _EINVAL "Invalid argument"
 # define _ENOMEM "Memory allocation failed."
 
+// quote
 enum		e_states
 {
 	STATE_DEFAULT = 0b0000,
@@ -39,10 +41,15 @@ typedef struct s_buf
 
 typedef struct s_vec
 {
-	char	**v;
-	size_t	len;
+	char	**vec;
+	size_t	idx;
 	size_t	cap;
 }			t_vec;
+
+typedef struct s_block
+{
+	size_t	size;
+}			t_block;
 
 // all_free.c
 void		all_free(char **mem);
@@ -79,5 +86,12 @@ int			update_state(int st, char c);
 
 // error_mes.c
 void		error_mes(char *mes);
+
+// my_realloc.c
+void		my_meta_free(void *ptr);
+char		*my_realloc(void *ptr, size_t size);
+
+// my_memcpy.c
+void		*my_memcpy(void *dest, const void *src, size_t n);
 
 #endif

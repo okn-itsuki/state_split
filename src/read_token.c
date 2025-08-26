@@ -6,7 +6,7 @@
 /*   By: iokuno <iokuno@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 20:14:27 by iokuno            #+#    #+#             */
-/*   Updated: 2025/08/27 00:56:57 by iokuno           ###   ########.fr       */
+/*   Updated: 2025/08/27 06:12:56 by iokuno           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	read_handle_error(t_buf buf)
 	if (buf_push(&buf, '\0') < 0)
 	{
 		error_mes(_ENOMEM);
-		return (free(buf.ptr), -1);
+		return (my_meta_free(buf.ptr), -1);
 	}
 	return (0);
 }
@@ -41,10 +41,10 @@ char	*read_token(const char *s, size_t *i)
 		show = is_visible(state, s[*i]);
 		state = update_state(state, s[*i]);
 		if (show && buf_push(&buf, s[*i]) < 0)
-			return (free(buf.ptr), NULL);
+			return (my_meta_free(buf.ptr), NULL);
 		(*i)++;
 	}
-	if (handle_error(buf) < 0)
+	if (read_handle_error(buf) < 0)
 		return (NULL);
 	return (buf.ptr);
 }

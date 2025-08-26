@@ -1,35 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   my_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iokuno <iokuno@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/26 21:06:10 by iokuno            #+#    #+#             */
-/*   Updated: 2025/08/27 06:37:15 by iokuno           ###   ########.fr       */
+/*   Created: 2025/08/27 05:19:20 by iokuno            #+#    #+#             */
+/*   Updated: 2025/08/27 06:20:43 by iokuno           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "inc/split_shell.h"
-#include <stdio.h>
+#include "split_shell.h"
 
-int	main(int ac, const char **av)
+void	*my_memcpy(void *dest, const void *src, size_t n)
 {
-	int		i;
-	char	**mem;
+	size_t				i;
+	unsigned char		*d;
+	const unsigned char	*s;
 
+	d = (unsigned char *)dest;
+	s = (const unsigned char *)src;
 	i = 0;
-	if (ac == 2)
+	if (d == s)
+		return (dest);
+	while (i < n)
 	{
-		mem = split_shell(av[1]);
-		if (!mem)
-			return (EXIT_FAILURE);
-		while (mem[i])
-		{
-			printf("%d : %s\n", i, mem[i]);
-			i++;
-		}
-		all_free(mem);
+		d[i] = s[i];
+		i++;
 	}
-	return (EXIT_SUCCESS);
+	return (dest);
 }
