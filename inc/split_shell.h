@@ -6,7 +6,7 @@
 /*   By: iokuno <iokuno@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 03:26:48 by iokuno            #+#    #+#             */
-/*   Updated: 2025/08/27 10:12:02 by iokuno           ###   ########.fr       */
+/*   Updated: 2025/08/27 13:57:46 by iokuno           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 
 // buf size
 # define BUFSIZE 16
+
 // quote
 enum		e_states
 {
