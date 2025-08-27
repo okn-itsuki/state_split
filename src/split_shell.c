@@ -6,7 +6,7 @@
 /*   By: iokuno <iokuno@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 03:28:41 by iokuno            #+#    #+#             */
-/*   Updated: 2025/08/27 06:20:24 by iokuno           ###   ########.fr       */
+/*   Updated: 2025/08/27 08:53:58 by iokuno           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ char	**split_shell(const char *s)
 		if (!tok)
 			return (all_free(vec.vec), NULL);
 		if (vec_push(&vec, tok) < 0)
-			return (free(tok), all_free(vec.vec), NULL);
+			return (my_meta_free(tok), all_free(vec.vec), NULL);
 		skip_set(s, &i);
 	}
 	if (!vec.vec && vec_push(&vec, NULL) < 0)

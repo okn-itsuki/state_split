@@ -6,7 +6,7 @@
 /*   By: iokuno <iokuno@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 20:14:31 by iokuno            #+#    #+#             */
-/*   Updated: 2025/08/27 06:13:02 by iokuno           ###   ########.fr       */
+/*   Updated: 2025/08/27 10:11:51 by iokuno           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	buf_grow(t_buf *buf, size_t need)
 	if (buf->cap >= need)
 		return (0);
 	if (buf->cap == 0)
-		ncap = 16;
+		ncap = BUFSIZE;
 	else
 		ncap = buf->cap * 2;
 	while (ncap < need)

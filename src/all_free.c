@@ -6,7 +6,7 @@
 /*   By: iokuno <iokuno@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 20:08:49 by iokuno            #+#    #+#             */
-/*   Updated: 2025/08/27 06:12:32 by iokuno           ###   ########.fr       */
+/*   Updated: 2025/08/27 08:39:02 by iokuno           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,5 @@ void	all_free(char **mem)
 		my_meta_free(mem[i]);
 		i++;
 	}
-	free(mem);
+	my_meta_free(mem);
 }

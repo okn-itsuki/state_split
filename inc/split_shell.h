@@ -6,7 +6,7 @@
 /*   By: iokuno <iokuno@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 03:26:48 by iokuno            #+#    #+#             */
-/*   Updated: 2025/08/27 06:19:35 by iokuno           ###   ########.fr       */
+/*   Updated: 2025/08/27 10:12:02 by iokuno           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@
 # define _EINVAL "Invalid argument"
 # define _ENOMEM "Memory allocation failed."
 
+// buf size
+# define BUFSIZE 16
 // quote
 enum		e_states
 {
@@ -89,7 +91,7 @@ void		error_mes(char *mes);
 
 // my_realloc.c
 void		my_meta_free(void *ptr);
-char		*my_realloc(void *ptr, size_t size);
+void		*my_realloc(void *ptr, size_t size);
 
 // my_memcpy.c
 void		*my_memcpy(void *dest, const void *src, size_t n);

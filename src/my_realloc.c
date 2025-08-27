@@ -6,7 +6,7 @@
 /*   By: iokuno <iokuno@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 11:04:57 by iokuno            #+#    #+#             */
-/*   Updated: 2025/08/27 06:21:20 by iokuno           ###   ########.fr       */
+/*   Updated: 2025/08/27 08:50:00 by iokuno           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,16 @@ static void	*meta_malloc(size_t size)
 {
 	t_block	*block;
 
+	if (size == 0)
+		return (NULL);
 	block = malloc(sizeof(t_block) + size);
+	if (!block)
+		return (NULL);
 	block->size = size;
 	return ((void *)(block + 1));
 }
 
-char	*my_realloc(void *ptr, size_t size)
+void	*my_realloc(void *ptr, size_t size)
 {
 	void	*new_ptr;
 	size_t	old_size;
@@ -41,7 +45,7 @@ char	*my_realloc(void *ptr, size_t size)
 		return (meta_malloc(size));
 	if (size == 0)
 	{
-		free(ptr);
+		my_meta_free(ptr);
 		return (NULL);
 	}
 	old_block = ((t_block *)ptr) - 1;
@@ -53,6 +57,6 @@ char	*my_realloc(void *ptr, size_t size)
 		my_memcpy(new_ptr, ptr, old_size);
 	else
 		my_memcpy(new_ptr, ptr, size);
-	free(ptr);
+	my_meta_free(ptr);
 	return (new_ptr);
 }
